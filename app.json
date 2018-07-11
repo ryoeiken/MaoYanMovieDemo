@@ -1,0 +1,36 @@
+{
+	"pages": [
+		"pages/movie/index",
+		"pages/center/index",
+		"pages/cinema/index"
+	],
+	"window": {
+		"navigationBarBackgroundColor": "#cc4d43",
+		"navigationBarTitleText": "猫眼电影"
+	},
+	"tabBar": {
+		"color": "#686868",
+		"selectedColor": "#F1443E",
+		"backgroundColor": "#FFFFFF",
+		"borderStyle": "white",
+		"list": [{
+				"text": "电影",
+				"pagePath": "pages/movie/index",
+				"iconPath": "icons/movie.png",
+				"selectedIconPath": "icons/movie_selected.png"
+			},
+			{
+				"text": "影院",
+				"pagePath": "pages/cinema/index",
+				"iconPath": "icons/cinema.png",
+				"selectedIconPath": "icons/cinema_selected.png"
+			},
+			{
+				"text": "我的",
+				"pagePath": "pages/center/index",
+				"iconPath": "icons/user.png",
+				"selectedIconPath": "icons/user_selected.png"
+			}
+		]
+	}
+}
