@@ -19,13 +19,91 @@
         <view class="info">
             <!-- 信息 -->
             <view class="meta">
+                <text class="name">我不是药神我不是药神我不是药神我不是药神我不是药神</text>
+                <text class="type">剧情, 喜剧</text>
+                <text class="actor">导演: 徐峥, 周一围</text>
+                <text class="count">今天178家影院播放4589场</text>
+            </view>
+            <!-- 其它 -->
+            <view class="extra">
+                <text>9.7<text class="small">分</text></text>
+                <button class="btn">购票</button>
+            </view>
+        </view>
+    </view>
+    <view class="item">
+        <image src="https://lg-9fodqsbm-1257029829.cos.ap-shanghai.myqcloud.com/maoyan/movie-2.jpg"></image>
+        <!-- 介绍 -->
+        <view class="info">
+            <!-- 信息 -->
+            <view class="meta">
                 <text class="name">我不是药神</text>
                 <text class="type">剧情, 喜剧</text>
                 <text class="actor">导演: 徐峥, 周一围</text>
                 <text class="count">今天178家影院播放4589场</text>
             </view>
             <!-- 其它 -->
-            <view class="extra"></view>
+            <view class="extra">
+                <text>32432423<text class="small">人想看</text></text>
+                <button class="btn presell">预售</button>
+            </view>
+        </view>
+    </view>
+    <view class="item">
+        <image src="https://lg-9fodqsbm-1257029829.cos.ap-shanghai.myqcloud.com/maoyan/movie-3.jpg"></image>
+        <!-- 介绍 -->
+        <view class="info">
+            <!-- 信息 -->
+            <view class="meta">
+                <text class="name">我不是药神</text>
+                <text class="type">剧情, 喜剧</text>
+                <text class="actor">导演: 徐峥, 周一围</text>
+                <text class="count">今天178家影院播放4589场</text>
+            </view>
+            <!-- 其它 -->
+            <view class="extra">
+                <text>9.7<text class="small">分</text></text>
+                <button class="btn">购票</button>
+            </view>
+        </view>
+    </view>
+    <view class="item">
+        <image src="https://lg-9fodqsbm-1257029829.cos.ap-shanghai.myqcloud.com/maoyan/movie-4.jpg"></image>
+        <!-- 介绍 -->
+        <view class="info">
+            <!-- 信息 -->
+            <view class="meta">
+                <text class="name">我不是药神</text>
+                <text class="type">剧情, 喜剧</text>
+                <text class="actor">导演: 徐峥, 周一围</text>
+                <text class="count">今天178家影院播放4589场</text>
+            </view>
+            <!-- 其它 -->
+            <view class="extra">
+                <text>324234<text class="small">人想看</text></text>
+                <button class="btn presell">预售</button>
+            </view>
+        </view>
+    </view>
+    <view class="item">
+        <image src="https://lg-9fodqsbm-1257029829.cos.ap-shanghai.myqcloud.com/maoyan/movie-5.jpg"></image>
+        <!-- 介绍 -->
+        <view class="info">
+            <!-- 信息 -->
+            <view class="meta">
+                <text class="name">我不是药神</text>
+                <text class="type">剧情, 喜剧</text>
+                <text class="actor">导演: 徐峥, 周一围</text>
+                <text class="count">今天178家影院播放4589场</text>
+            </view>
+            <!-- 其它 -->
+            <view class="extra">
+                <text>9.7<text class="small">分</text></text>
+                <button class="btn">购票</button>
+            </view>
         </view>
     </view>
 </view>
+
+<!-- 正在加载 -->
+<text class="loading">加载数据...</text>

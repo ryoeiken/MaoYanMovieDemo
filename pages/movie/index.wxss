@@ -1,4 +1,8 @@
 
+page {
+    background-color: #F6F6F6;
+}
+
 /* 头部 */
 .header {
     display: flex;
@@ -7,6 +11,7 @@
     padding: 0 24rpx;
     border-bottom: 1rpx solid #d8d8d8;
     font-size: 28rpx;
+    background-color: #FFF;
 }
 
 .header .locate {
@@ -74,31 +79,44 @@
 
 /* 列表 */
 .items {
-
+    background-color: #FFF;
 }
 
 .items .item {
-    padding: 24rpx 0 24rpx 24rpx;
+    padding: 24rpx 0 0 24rpx;
+    position: relative;
 }
 
 .items image {
     width: 128rpx;
     height: 180rpx;
 
-    float: left;
+    position: absolute;
 }
 
 .items .info {
+    display: flex;
+    justify-content: space-between;
+
     height: 208rpx;
     padding-left: 152rpx;
+    padding-right: 24rpx;
     border-bottom: 1rpx solid #dcdcdc;
 }
 
 .items .meta text {
     display: block;
+    width: 380rpx;
     line-height: 1.7;
     font-size: 26rpx;
     color: #66666;
+
+    /* 当文本内容过多时，出现省略号 ... */
+    text-overflow: ellipsis;
+    /* 强制文字不换找 */
+    white-space: nowrap;
+    /* 溢出内容不显示 */
+    overflow: hidden;
 }
 
 .items .meta .name {
@@ -108,4 +126,52 @@
 
 .items .meta .count {
     color: #99999;
+}
+
+.items .extra {
+    width: 230rpx;
+    height: 180rpx;
+    text-align: right;
+
+    position: relative;
+}
+
+.items .extra button {
+    width: 96rpx;
+    height: 56rpx;
+    padding: 0;
+    line-height: 56rpx;
+    font-size: 24rpx;
+    background-color: #dd5042;
+    color: #FFF;
+
+    position: absolute;
+    bottom: 30rpx;
+    right: 0;
+}
+
+.items .extra button::after {
+    content: '';
+    border: none;
+}
+
+.items .extra .presell {
+    background-color: #6baee6;
+}
+
+.items .extra text {
+    color: #f4b73f;
+    font-size: 24rpx;
+}
+
+.items .extra .small {
+    font-size: 18rpx;
+}
+
+.loading {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 20rpx 0;
+    font-size: 28rpx;
 }
