@@ -1,0 +1,111 @@
+
+/* 头部 */
+.header {
+    display: flex;
+    height: 88rpx;
+    line-height: 88rpx;
+    padding: 0 24rpx;
+    border-bottom: 1rpx solid #d8d8d8;
+    font-size: 28rpx;
+}
+
+.header .locate {
+    width: 110rpx;
+    color: #666666;
+    text-align: center;
+
+    position: relative;
+}
+
+.header .locate::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-width: 10rpx;
+    border-style: solid;
+    border-color: #cacaca transparent transparent transparent;
+
+    position: absolute;
+    right: 0;
+    top: 50%;
+}
+
+.header .tabs {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 130rpx;
+    color: #333;
+    font-weight: 700;
+}
+
+.header .tabs text {
+    display: block;
+    padding: 0 16rpx;
+
+    position: relative;
+}
+
+.header .tabs .active {
+    color: #dd5137;
+}
+
+.header .tabs .active::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1rpx;
+    background-color: #dd5137;
+
+    position: absolute;
+    bottom: 1rpx;
+    left: 0;
+}
+
+.header .search {
+    width: 88rpx;
+    border-left: 1rpx solid #d8d8d8;
+    background-image: url(https://lg-9fodqsbm-1257029829.cos.ap-shanghai.myqcloud.com/maoyan/search.png);
+    background-repeat: no-repeat;
+    background-size: 48rpx 48rpx;
+    background-position: right center;
+}
+
+/* 列表 */
+.items {
+
+}
+
+.items .item {
+    padding: 24rpx 0 24rpx 24rpx;
+}
+
+.items image {
+    width: 128rpx;
+    height: 180rpx;
+
+    float: left;
+}
+
+.items .info {
+    height: 208rpx;
+    padding-left: 152rpx;
+    border-bottom: 1rpx solid #dcdcdc;
+}
+
+.items .meta text {
+    display: block;
+    line-height: 1.7;
+    font-size: 26rpx;
+    color: #66666;
+}
+
+.items .meta .name {
+    font-size: 32rpx;
+    color: #22222;
+}
+
+.items .meta .count {
+    color: #99999;
+}
