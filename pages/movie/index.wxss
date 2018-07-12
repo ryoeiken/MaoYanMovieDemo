@@ -82,6 +82,10 @@ page {
     background-color: #FFF;
 }
 
+.coming {
+    border-top: 1rpx solid #e6e6e6;
+}
+
 .items .item {
     padding: 24rpx 0 0 24rpx;
     position: relative;
@@ -172,6 +176,61 @@ page {
     display: block;
     width: 100%;
     text-align: center;
-    margin: 20rpx 0;
+    padding: 20rpx 0;
     font-size: 28rpx;
+}
+
+.title {
+    display: block;
+    padding: 24rpx 24rpx 0;
+    font-size: 28rpx;
+    color: #3a3a3a;
+    background-color: #FFF;
+}
+
+/* 近期最受欢迎 */
+scroll-view {
+    width: 750rpx;
+    height: 395rpx;
+    /* 强制行内元素不换行 */
+    white-space: nowrap;
+    background-color: #FFF;
+    padding: 24rpx;
+    margin-bottom: 20rpx;
+    border-bottom: 1rpx solid #e6e6e6;
+    box-sizing: border-box;
+}
+
+.cell {
+    display: inline-block;
+    width: 170rpx;
+    margin-right: 20rpx;
+}
+
+.cell:last-child {
+    margin-right: 0;
+}
+
+.cell image {
+    width: 170rpx;
+    height: 230rpx;
+    vertical-align: middle;
+}
+
+.cell text {
+    display: block;
+    width: 170rpx;
+    line-height: 1.6;
+    font-size: 22rpx;
+    color: #c9c9c9;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.cell .name {
+    font-size: 26rpx;
+    color: #505050;
+    margin-top: 10rpx;
 }

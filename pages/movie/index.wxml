@@ -1,25 +1,25 @@
 <!-- 头部 -->
 <view class="header">
     <!-- 位置 -->
-    <navigator class="locate" url="">广州</navigator>
+    <navigator class="locate" url="">{{city}}</navigator>
     <!-- tab切换 -->
     <view class="tabs">
-        <text class="active">热映</text>
-        <text>待映</text>
+        <text class="{{tabIndex == 'hots' ? 'active' : ''}}" data-tab-index="hots" bind:tap="switch">热映</text>
+        <text class="{{tabIndex == 'coming' ? 'active' : ''}}" data-tab-index="coming" bind:tap="switch">待映</text>
     </view>
     <!-- 搜索 -->
     <navigator class="search" url=""></navigator>
 </view>
 
-<!-- 电影列表 -->
-<view class="items">
+<!-- 电影列表(热映) -->
+<view class="items" hidden="{{tabIndex == 'coming'}}">
     <view class="item">
         <image src="https://lg-9fodqsbm-1257029829.cos.ap-shanghai.myqcloud.com/maoyan/movie-1.jpg"></image>
         <!-- 介绍 -->
         <view class="info">
             <!-- 信息 -->
             <view class="meta">
-                <text class="name">我不是药神我不是药神我不是药神我不是药神我不是药神</text>
+                <text class="name">我不是药神</text>
                 <text class="type">剧情, 喜剧</text>
                 <text class="actor">导演: 徐峥, 周一围</text>
                 <text class="count">今天178家影院播放4589场</text>
@@ -100,6 +100,170 @@
             <view class="extra">
                 <text>9.7<text class="small">分</text></text>
                 <button class="btn">购票</button>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="wrap" hidden="{{tabIndex == 'hots'}}">
+    <!-- 近期最受欢迎 -->
+    <text class="title">近期最受欢迎</text>
+    <!-- 如果组件的属性值为 布尔类型，需要使用 {{}} -->
+    <!-- 如果布尔类型值为 true，则可以省略值 -->
+    <scroll-view scroll-x>
+        <view class="cell">
+            <image src="https://lg-9fodqsbm-1257029829.cos.ap-shanghai.myqcloud.com/maoyan/movie-11.jpg"></image>
+            <text class="name">爱情公寓</text>
+            <text class="wish">2143232人想看</text>
+            <text class="date">8月10日</text>
+        </view>
+        <view class="cell">
+            <image src="https://lg-9fodqsbm-1257029829.cos.ap-shanghai.myqcloud.com/maoyan/movie-12.jpg"></image>
+            <text class="name">爱情公寓</text>
+            <text class="wish">2143232人想看</text>
+            <text class="date">8月10日</text>
+        </view>
+        <view class="cell">
+            <image src="https://lg-9fodqsbm-1257029829.cos.ap-shanghai.myqcloud.com/maoyan/movie-13.jpg"></image>
+            <text class="name">爱情公寓</text>
+            <text class="wish">2143232人想看</text>
+            <text class="date">8月10日</text>
+        </view>
+        <view class="cell">
+            <image src="https://lg-9fodqsbm-1257029829.cos.ap-shanghai.myqcloud.com/maoyan/movie-14.jpg"></image>
+            <text class="name">爱情公寓</text>
+            <text class="wish">2143232人想看</text>
+            <text class="date">8月10日</text>
+        </view>
+        <view class="cell">
+            <image src="https://lg-9fodqsbm-1257029829.cos.ap-shanghai.myqcloud.com/maoyan/movie-15.jpg"></image>
+            <text class="name">爱情公寓</text>
+            <text class="wish">2143232人想看</text>
+            <text class="date">8月10日</text>
+        </view>
+        <view class="cell">
+            <image src="https://lg-9fodqsbm-1257029829.cos.ap-shanghai.myqcloud.com/maoyan/movie-16.jpg"></image>
+            <text class="name">爱情公寓</text>
+            <text class="wish">2143232人想看</text>
+            <text class="date">8月10日</text>
+        </view>
+        <view class="cell">
+            <image src="https://lg-9fodqsbm-1257029829.cos.ap-shanghai.myqcloud.com/maoyan/movie-17.jpg"></image>
+            <text class="name">爱情公寓</text>
+            <text class="wish">2143232人想看</text>
+            <text class="date">8月10日</text>
+        </view>
+        <view class="cell">
+            <image src="https://lg-9fodqsbm-1257029829.cos.ap-shanghai.myqcloud.com/maoyan/movie-18.jpg"></image>
+            <text class="name">爱情公寓</text>
+            <text class="wish">2143232人想看</text>
+            <text class="date">8月10日</text>
+        </view>
+        <view class="cell">
+            <image src="https://lg-9fodqsbm-1257029829.cos.ap-shanghai.myqcloud.com/maoyan/movie-19.jpg"></image>
+            <text class="name">爱情公寓</text>
+            <text class="wish">2143232人想看</text>
+            <text class="date">8月10日</text>
+        </view>
+        <view class="cell">
+            <image src="https://lg-9fodqsbm-1257029829.cos.ap-shanghai.myqcloud.com/maoyan/movie-20.jpg"></image>
+            <text class="name">爱情公寓</text>
+            <text class="wish">2143232人想看</text>
+            <text class="date">8月10日</text>
+        </view>
+    </scroll-view>
+
+    <!-- 电影列表(待映) -->
+    <view class="items coming">
+        <text class="title">7月11日 周三</text>
+        <view class="item">
+            <image src="https://lg-9fodqsbm-1257029829.cos.ap-shanghai.myqcloud.com/maoyan/movie-1.jpg"></image>
+            <!-- 介绍 -->
+            <view class="info">
+                <!-- 信息 -->
+                <view class="meta">
+                    <text class="name">我不是药神66666</text>
+                    <text class="type">剧情, 喜剧</text>
+                    <text class="actor">导演: 徐峥, 周一围</text>
+                    <text class="count">今天178家影院播放4589场</text>
+                </view>
+                <!-- 其它 -->
+                <view class="extra">
+                    <text>9.7<text class="small">分</text></text>
+                    <button class="btn">购票</button>
+                </view>
+            </view>
+        </view>
+        <view class="item">
+            <image src="https://lg-9fodqsbm-1257029829.cos.ap-shanghai.myqcloud.com/maoyan/movie-2.jpg"></image>
+            <!-- 介绍 -->
+            <view class="info">
+                <!-- 信息 -->
+                <view class="meta">
+                    <text class="name">我不是药神</text>
+                    <text class="type">剧情, 喜剧</text>
+                    <text class="actor">导演: 徐峥, 周一围</text>
+                    <text class="count">今天178家影院播放4589场</text>
+                </view>
+                <!-- 其它 -->
+                <view class="extra">
+                    <text>32432423<text class="small">人想看</text></text>
+                    <button class="btn presell">预售</button>
+                </view>
+            </view>
+        </view>
+        <view class="item">
+            <image src="https://lg-9fodqsbm-1257029829.cos.ap-shanghai.myqcloud.com/maoyan/movie-3.jpg"></image>
+            <!-- 介绍 -->
+            <view class="info">
+                <!-- 信息 -->
+                <view class="meta">
+                    <text class="name">我不是药神</text>
+                    <text class="type">剧情, 喜剧</text>
+                    <text class="actor">导演: 徐峥, 周一围</text>
+                    <text class="count">今天178家影院播放4589场</text>
+                </view>
+                <!-- 其它 -->
+                <view class="extra">
+                    <text>9.7<text class="small">分</text></text>
+                    <button class="btn">购票</button>
+                </view>
+            </view>
+        </view>
+        <view class="item">
+            <image src="https://lg-9fodqsbm-1257029829.cos.ap-shanghai.myqcloud.com/maoyan/movie-4.jpg"></image>
+            <!-- 介绍 -->
+            <view class="info">
+                <!-- 信息 -->
+                <view class="meta">
+                    <text class="name">我不是药神</text>
+                    <text class="type">剧情, 喜剧</text>
+                    <text class="actor">导演: 徐峥, 周一围</text>
+                    <text class="count">今天178家影院播放4589场</text>
+                </view>
+                <!-- 其它 -->
+                <view class="extra">
+                    <text>324234<text class="small">人想看</text></text>
+                    <button class="btn presell">预售</button>
+                </view>
+            </view>
+        </view>
+        <view class="item">
+            <image src="https://lg-9fodqsbm-1257029829.cos.ap-shanghai.myqcloud.com/maoyan/movie-5.jpg"></image>
+            <!-- 介绍 -->
+            <view class="info">
+                <!-- 信息 -->
+                <view class="meta">
+                    <text class="name">我不是药神</text>
+                    <text class="type">剧情, 喜剧</text>
+                    <text class="actor">导演: 徐峥, 周一围</text>
+                    <text class="count">今天178家影院播放4589场</text>
+                </view>
+                <!-- 其它 -->
+                <view class="extra">
+                    <text>9.7<text class="small">分</text></text>
+                    <button class="btn">购票</button>
+                </view>
             </view>
         </view>
     </view>
