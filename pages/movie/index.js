@@ -40,6 +40,37 @@ Page({
                         self.setData({
                             city: info.data.data.city
                         });
+
+                        // 根据用户所在城市，获得相应的热门电影
+                        wx.request({
+                            url: 'https://wx.maoyan.com/mmdb/movie/v2/list/hot.json',
+                            data: {
+                                // 用户所在城市
+                                ct: info.data.data.city,
+                                // 获取数据的条数
+                                limit: 12,
+                                // 获取数据的位置
+                                offset: 0
+                            },
+                            method: 'get',
+                            success: function (hots) {
+                                // 响应的数据
+                                // console.log(hots);
+
+                                // 遍历处理数据，将 w.h 替换成 128.180
+                                // 即需要的图片尺寸
+                                hots.data.data.hot.forEach(function (val) {
+                                    val.img = val.img.replace('w.h', '128.180');
+                                });
+
+                                // 添加数据
+                                self.setData({
+                                    hots: {
+                                        items: hots.data.data.hot
+                                    }
+                                });
+                            }
+                        });
                     }
                 });
             }
