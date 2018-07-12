@@ -204,4 +204,4 @@
 </view>
 
 <!-- 正在加载 -->
-<text class="loading">加载数据...</text>
+<text class="loading" wx:if="{{hots.hasMore}}">加载数据...</text>

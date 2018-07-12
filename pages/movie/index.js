@@ -68,7 +68,8 @@ Page({
                                 // 添加数据
                                 self.setData({
                                     hots: {
-                                        items: hots.data.data.hot
+                                        items: hots.data.data.hot,
+                                        hasMore: hots.data.data.paging.hasMore
                                     }
                                 });
                             }
@@ -81,9 +82,13 @@ Page({
 
     // 上拉触底
     onReachBottom: function () {
-        console.log('上拉触底了...');
+        // console.log('上拉触底了...');
 
         var self = this;
+
+        var hasMore = self.data.hots.hasMore;
+
+        if(!hasMore) return;
 
         // 在小程序中通过 this.data 可以获得 data 中的
         // 数据
@@ -123,7 +128,8 @@ Page({
                 self.setData({
                     page: ++self.data.page,
                     hots: {
-                        items: items
+                        items: items,
+                        hasMore: info.data.data.paging.hasMore
                     }
                 });
 
