@@ -13,7 +13,7 @@
 
 <!-- 电影列表(热映) -->
 <view class="items" hidden="{{tabIndex == 'coming'}}">
-    <view class="item" wx:for="{{hots.items}}">
+    <view class="item" wx:for="{{hots.items}}" wx:key="{{item.id}}">
         <image src="{{item.img}}"></image>
         <!-- 介绍 -->
         <view class="info">
@@ -26,8 +26,14 @@
             </view>
             <!-- 其它 -->
             <view class="extra">
-                <text>{{item.mk}}<text class="small">分</text></text>
-                <button class="btn">购票</button>
+                <block wx:if="{{item.preSale == 0}}">
+                    <text>{{item.mk}}<text class="small">分</text></text>
+                    <button class="btn">购票</button>
+                </block>
+                <block wx:else>
+                    <text>{{item.wish}}<text class="small">人想看</text></text>
+                    <button class="btn presell">预售</button>
+                </block>
             </view>
         </view>
     </view>
