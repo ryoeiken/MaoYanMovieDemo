@@ -2,7 +2,9 @@
 Page({
     
     data: {
-        tabIndex: 'hots'
+        tabIndex: 'hots',
+        limit: 12,
+        page: 1
     },
 
     // 生命周期函数
@@ -73,6 +75,58 @@ Page({
                         });
                     }
                 });
+            }
+        });
+    },
+
+    // 上拉触底
+    onReachBottom: function () {
+        console.log('上拉触底了...');
+
+        var self = this;
+
+        // 在小程序中通过 this.data 可以获得 data 中的
+        // 数据
+        // console.log(this.data);
+
+        // 0 - 11
+
+        // 12 - 23
+
+        // 24 - 35
+
+        // 36 - 47
+
+        // 去请求更多的数据
+        wx.request({
+            url: 'https://wx.maoyan.com/mmdb/movie/v2/list/hot.json',
+            data: {
+                ct: self.data.city,
+                limit: self.data.limit,
+                offset: self.data.limit * self.data.page
+            },
+            method: 'get',
+            success: function (info) {
+                // console.log(info);
+
+                // 替换图片尺寸
+                info.data.data.hot.forEach(function (val) {
+                    val.img = val.img.replace('w.h', '128.180');
+                })
+
+                // 将新请求来的数据追加至原有数据中
+                // console.log(self.data)
+                var items = self.data.hots.items.concat(info.data.data.hot);
+
+                // console.log(items);
+                // 添加数据
+                self.setData({
+                    page: ++self.data.page,
+                    hots: {
+                        items: items
+                    }
+                });
+
             }
         });
     },
