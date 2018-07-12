@@ -154,5 +154,38 @@ Page({
     // 监听用户下拉操作
     onPullDownRefresh: function () {
         console.log('有人下拉了...');
+
+        var self = this;
+
+        // 发送请求获取最新的数据
+        // 最新数据其实就是 第 1 页数据
+        wx.request({
+            url: 'https://wx.maoyan.com/mmdb/movie/v2/list/hot.json',
+            data: {
+                ct: self.data.city,
+                limit: 12,
+                offset: 0
+            },
+            method: 'get',
+            success: function (info) {
+                // console.log(info);
+
+                // 替换图片尺寸
+                info.data.data.hot.forEach(function (val) {
+                    val.img = val.img.replace('w.h', '128.180');
+                })
+
+                // 添加数据
+                self.setData({
+                    hots: {
+                        items: info.data.data.hot,
+                        // 有没有下一页
+                        hasMore: info.data.data.paging.hasMore
+                    },
+                    // 刷新后页码恢复到 第 1 页
+                    page: 1
+                });
+            }
+        });
     }
 });
