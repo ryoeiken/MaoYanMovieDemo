@@ -192,7 +192,7 @@ Page({
                 },
                 method: 'get',
                 success: function (v1) {
-                    console.log(v1);
+                    // console.log(v1);
 
                     // 替图片尺寸
                     v1.data.data.coming.forEach(function (val) {
@@ -210,12 +210,22 @@ Page({
                         },
                         method: 'get',
                         success: function (v2) {
-                            console.log(v2);
+                            // console.log(v2);
 
                             // 替图片尺寸
+                            var title = '';
                             v2.data.data.coming.forEach(function (val) {
                                 val.img = val.img.replace('w.h', '128.180');
+                                
+                                if(val.comingTitle == title) {
+                                    val.comingTitle = '';
+                                } else {
+                                    title = val.comingTitle;
+                                }
+                                
                             });
+
+                            // console.log(v2);
 
                             // 添加数据
                             self.setData({

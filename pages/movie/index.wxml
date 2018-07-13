@@ -39,9 +39,9 @@
     </view>
 </view>
 
-<view class="wrap" hidden="{{tabIndex == 'hots'}}">
+<view class="wrap" hidden="{{tabIndex == 'hots'}}" wx:if="{{!coming.empty}}">
     <!-- 近期最受欢迎 -->
-    <text class="title" wx:if="{{!coming.empty}}">近期最受欢迎</text>
+    <text class="title" >近期最受欢迎</text>
     <!-- 如果组件的属性值为 布尔类型，需要使用 {{}} -->
     <!-- 如果布尔类型值为 true，则可以省略值 -->
     <scroll-view scroll-x>
@@ -52,28 +52,29 @@
             <text class="date">{{item.comingTitle}}</text>
         </view>
     </scroll-view>
-
     <!-- 电影列表(待映) -->
     <view class="items coming">
-        <text class="title">7月11日 周三</text>
-        <view class="item" wx:for="{{coming.v2.items}}" wx:key="{{item.id}}">
-            <image src="{{item.img}}"></image>
-            <!-- 介绍 -->
-            <view class="info">
-                <!-- 信息 -->
-                <view class="meta">
-                    <text class="name">{{item.nm}}</text>
-                    <text class="type">{{item.cat}}</text>
-                    <text class="actor">{{item.dir}}</text>
-                    <text class="count">{{item.showInfo}}</text>
-                </view>
-                <!-- 其它 -->
-                <view class="extra">
-                    <text>{{item.wish}}<text class="small">人想看</text></text>
-                    <button class="btn presell">预售</button>
+        <block wx:for="{{coming.v2.items}}" wx:key="{{item.id}}">
+            <text class="title">{{item.comingTitle}}</text>
+            <view class="item">
+                <image src="{{item.img}}"></image>
+                <!-- 介绍 -->
+                <view class="info">
+                    <!-- 信息 -->
+                    <view class="meta">
+                        <text class="name">{{item.nm}}</text>
+                        <text class="type">{{item.cat}}</text>
+                        <text class="actor">{{item.dir}}</text>
+                        <text class="count">{{item.showInfo}}</text>
+                    </view>
+                    <!-- 其它 -->
+                    <view class="extra">
+                        <text>{{item.wish}}<text class="small">人想看</text></text>
+                        <button class="btn presell">预售</button>
+                    </view>
                 </view>
             </view>
-        </view>
+        </block>
     </view>
 </view>
 
