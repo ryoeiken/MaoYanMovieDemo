@@ -3,6 +3,9 @@ Page({
     
     data: {
         tabIndex: 'hots',
+        coming: {
+            empty: true
+        },
         limit: 12,
         page: 1
     },
@@ -43,6 +46,11 @@ Page({
                             city: info.data.data.city
                         });
 
+                        // 加载状态
+                        wx.showLoading({
+                            title: '数据加载...'
+                        });
+
                         // 根据用户所在城市，获得相应的热门电影
                         wx.request({
                             url: 'https://wx.maoyan.com/mmdb/movie/v2/list/hot.json',
@@ -69,9 +77,13 @@ Page({
                                 self.setData({
                                     hots: {
                                         items: hots.data.data.hot,
-                                        hasMore: hots.data.data.paging.hasMore
-                                    }
+                                        hasMore: hots.data.data.paging.hasMore,
+                                        empty: false
+                                    },
                                 });
+
+                                // 加载完成
+                                wx.hideLoading();
                             }
                         });
                     }
@@ -140,6 +152,8 @@ Page({
     switch: function (ev) {
         // console.log(ev);
 
+        var self = this;
+
         // 通过 自定义属性 tabIndex 的值来
         // 判断用户的点击
         var tabIndex = ev.target.dataset.tabIndex;
@@ -149,6 +163,77 @@ Page({
         this.setData({
             tabIndex: tabIndex
         });
+
+        // 当点击 tab 时，检测当前 tab 对应的数据
+        // 是否存在，如果已存在不必发请求，相反如果
+        // 没有数据，则发送请求
+
+        var empty = this.data[tabIndex].empty;
+
+        // 如果已经有数据，那么不必重新请求
+        if(!empty) return;
+
+        if(tabIndex == 'hots') {
+            // 热门电影
+            console.log('请求执映数据...');
+        }
+
+        if(tabIndex == 'coming') {
+            // 待映
+            console.log('请求待映数据...');
+
+            // 请求最受欢迎
+            wx.request({
+                url: 'https://wx.maoyan.com/mmdb/movie/v1/list/wish/order/coming.json',
+                data: {
+                    ci: 1,
+                    limit: 30,
+                    offset: 0
+                },
+                method: 'get',
+                success: function (v1) {
+                    console.log(v1);
+
+                    // 替图片尺寸
+                    v1.data.data.coming.forEach(function (val) {
+                        val.img = val.img.replace('w.h', '170.230');
+
+                        val.comingTitle = val.comingTitle.slice(0, -3);
+                    });
+
+                    // 待映电影列表
+                    wx.request({
+                        url: 'https://wx.maoyan.com/mmdb/movie/v2/list/rt/order/coming.json',
+                        data: {
+                            ci: 1,
+                            limit: 10
+                        },
+                        method: 'get',
+                        success: function (v2) {
+                            console.log(v2);
+
+                            // 替图片尺寸
+                            v2.data.data.coming.forEach(function (val) {
+                                val.img = val.img.replace('w.h', '128.180');
+                            });
+
+                            // 添加数据
+                            self.setData({
+                                coming: {
+                                    v1: {
+                                        items: v1.data.data.coming
+                                    },
+                                    v2: {
+                                        items: v2.data.data.coming
+                                    },
+                                    empty: false
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        }
     },
 
     // 监听用户下拉操作
